@@ -40,7 +40,7 @@ function [pol,zer, res] = prz_cfrac(aa,zz)
     dz = 1e-5*exp(2i*pi*(1:4)/4);
     pz = bsxfun(@plus,pol,dz);
     for k = 1:length(pol)
-        res(k)=(evalcfrac(aa,zz, pz(k,:)')')*(dz')/4;
+        res(k)=(evalcfrac(aa,zz, pz(k,:).').')*(dz.')/4;
     end
 
 end
