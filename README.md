@@ -11,7 +11,7 @@ If you use these codes in any published research, please cite the following publ
 Some of the below examples are inspired by [AAA](https://doi.org/10.1137/16M1106122).
 
 ## Approximating the Gamma function.
-We approximate the Gamma function $\Gamma(z)$ using 100 linearly spaced points between $-1.5$ and $1.5$
+We approximate the Gamma function $\Gamma(z)$ on the real line using 100 linearly spaced points between $-1.5$ and $1.5$
 ```matlab
 Z = linspace(-1.5,1.5);
 ff = @(z) gamma(z);
@@ -20,7 +20,7 @@ One obtains the continued fraction rational interpolant as follows. The adaptive
 ```matlab
 [aa,xx] = cfrac_interpolate(Z,ff(Z));
 ```
-One can plot the approximation on a wider domain such as ($-3.5, 3.5)$
+One can plot the approximation on a wider domain such as ($-3.5, 4.5)$
 ```matlab
 zz = linspace(-3.5,4.5,1000).';
 figure()
@@ -38,7 +38,7 @@ The poles, zeros and residues of this rational function are obtained as follows.
 ```matlab
 [pol,zer, res] = prz_cfrac(aa,xx);
 ```
-It can be checked that the obtained poles on the negative axis and their associated residues agree well with those of $\Gamma(z)$ with their accuracy decreasing as one moves further from the interpolation interval. 
+It can be checked that the obtained poles on the negative axis and their associated residues agree well with the first ones of $\Gamma(z)$ although their accuracy decreases as one moves further from the interpolation interval. Recall that $\Gamma(z)$ has poles $0,-1,-2,-3,\ldots$ and associated [residues](https://en.wikipedia.org/wiki/Gamma_function#Residues) $Res(\Gamma,-k) = (-1)^k /k!$.
 ```matlab
 [pol(find(real(pol)<0)) res(find(real(pol)<0))]
 ```
@@ -60,7 +60,6 @@ Z = rand(npts,1).*1i.*(-1).^(randi(2,npts,1)-1) + rand(npts,1)*10 ;
 ff = @(z) 1./besselj(0,z);
 ```
 Then we construct the continued fraction rational interpolant with (default) tollerance $10^{-13}$. The adaptive procedure stops after chosing $n=25$ points.
-
 ```matlab
 [aa,xx] = cfrac_interpolate(Z,ff(Z), 1e-13);
 ```
