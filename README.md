@@ -33,6 +33,18 @@ ans =
    8.6537 - 0.0000i
 ```
 A figure of the data and the location of the obtained poles is shown below.
+```matlab
+figure()
+plot(Z,'o'); hold on;
+plot(pol,'*', 'Color', 'r');
+xlim([-5 15])
+ylim([-3 3])
+grid on
+xlabel('Real')
+ylabel('Imag')
+legend('data location','poles')
+title('Approximation of 1/J0(z) in 2000 random points in a rectangle in the complex plane')
+```
 ![bessel](https://github.com/oscelis/numerical_continued_fraction_interpolation/assets/7952417/d0cc58af-923e-49e6-b8cf-e664cb64effb)
 
 ### Analytic functions in the unit disk.
@@ -46,7 +58,7 @@ and check how well it approximates inside the unit disk.
 alpha = rand(1000,1)*2*pi; %random angles
 ZZ = rand(1000,1).*(cos(alpha)+1i*sin(alpha)); %random points inside the unit circle
 ```
-It is observed that, as more interpolation points are added, 10-digit  accuracy is quickly achieved.  
+It is observed that, as more interpolation points are allowed to be taken, then 10-digit accuracy is quickly achieved.  
 ```matlab
 nn = 30;
 errors = inf(nn,1);
