@@ -56,7 +56,7 @@ Z = exp(linspace(-1,1, 128)*1i*2*pi); %equidistant points on the unit circle
 and check how well it approximates inside the unit disk.
 ```matlab
 alpha = rand(1000,1)*2*pi; %random angles
-ZZ = rand(1000,1).*(cos(alpha)+1i*sin(alpha)); %random points inside the unit circle
+ZZ = rand(1000,1).*(cos(alpha)+1i*sin(alpha)); %random points inside the unit disk
 ```
 It is observed that, as more interpolation points are allowed to be taken, then 10-digit accuracy is quickly achieved.  
 ```matlab
@@ -70,7 +70,9 @@ figure()
 plot(log10(errors),'o')
 grid on
 xlabel('number of points')
-ylabel('max error inside the unit circle')
+ylabel('max error inside the unit disk')
 title('rational approximation to tan(z) sampled on the unit circle ')
 ```
-![tanz](https://github.com/oscelis/numerical_continued_fraction_interpolation/assets/7952417/763c0548-63f9-4b74-9fb4-3fc7f42873fa)
+![tanz](https://github.com/oscelis/numerical_continued_fraction_interpolation/assets/7952417/4b0cc71c-c320-4b9e-930c-1631ba3238c4)
+
+
