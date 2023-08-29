@@ -2,10 +2,15 @@
 
 This repository contains MATLAB codes for performing [Numerical Continued Fraction Interpolation](https://doi.org/10.48550/arXiv.2109.10529).
 
-## Examples.
+If you use these codes in any published research, please cite the following publication(s):
+* O. Salazar Celis, **Numerical continued fraction interpolation**, *Ukrainian Mathematical Journal*, 2023, (accepted - in press) [arXiv](https://doi.org/10.48550/arXiv.2109.10529).
+* O. Salazar Celis, **Adaptive Thiele interpolation**, *ACM Communications in Computer Algebra*, 56(3):125--132, 2022 ([doi](https://doi.org/10.1145/3594252.3594254))
+
+
+# Examples.
 Some of the below examples are inspired by [AAA](https://doi.org/10.1137/16M1106122).
 
-### Approximation in a rectangular domain.
+## Approximation in a rectangular domain.
 We approximate the reciprocal Bessel function $1/J0(z)$ in $2000$ uniformly distributed random points in the rectangle defined by the corners $±i$ and $10±i$.
  The interpolation data is setup as below. 
 ```matlab
@@ -47,7 +52,7 @@ title('Approximation of 1/J0(z) in 2000 random points in a rectangle in the comp
 ```
 ![bessel](https://github.com/oscelis/numerical_continued_fraction_interpolation/assets/7952417/d0cc58af-923e-49e6-b8cf-e664cb64effb)
 
-### Analytic functions in the unit disk.
+## Analytic functions in the unit disk.
 We approximate the function $tan(z)$ sampled in 128 equidistant points on the unit circle 
 ```matlab
 ff = @(z) tan(z);
