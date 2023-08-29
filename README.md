@@ -10,6 +10,47 @@ If you use these codes in any published research, please cite the following publ
 # Examples.
 Some of the below examples are inspired by [AAA](https://doi.org/10.1137/16M1106122).
 
+## Approximating the Gamma function.
+We approximate the Gamma function $\Gamma(z)$ using 100 linearly spaced points between $-1.5$ and $1.5$
+```matlab
+Z = linspace(-1.5,1.5);
+ff = @(z) gamma(z);
+```
+One obtains the continued fraction rational interpolant as follows. The adaptive procedure stops after chosing $n=19$ points when the default tollerance of $10^{-13}$ is reached on all given points.
+```matlab
+[aa,xx] = cfrac_interpolate(Z,ff(Z));
+```
+One can plot the approximation on a wider domain such as ($-3.5, 3.5)$
+```matlab
+zz = linspace(-3.5,4.5,1000).';
+figure()
+plot(zz,evalcfrac(aa,xx,zz))
+xlim([-3.5 4.5])
+ylim([-8 8])
+grid on
+xlabel('x')
+ylabel('r(x)')
+title('Rational approximation of the Gamma function')
+```
+![gamma](https://github.com/oscelis/numerical_continued_fraction_interpolation/assets/7952417/b46fd555-8d59-4c49-868e-506236de9868)
+
+The poles, zeros and residues of this rational function are obtained as follows.
+```matlab
+[pol,zer, res] = prz_cfrac(aa,xx);
+```
+It can be checked that the obtained poles on the negative axis and their associated residues agree well with those of $\Gamma(z)$ with their accuracy decreasing as one moves further from the interpolation interval. 
+```matlab
+[pol(find(real(pol)<0)) res(find(real(pol)<0))]
+```
+```matlab
+ans =
+  -0.0000 + 0.0000i   1.0000 - 0.0000i
+  -1.0000 + 0.0000i  -1.0000 + 0.0000i
+  -2.0000 + 0.0000i   0.5000 - 0.0000i
+  -3.0033 + 0.0000i  -0.1697 + 0.0000i
+  -3.7948 + 0.0000i   0.0368 - 0.0000i```
+```
+
 ## Approximation in a rectangular domain.
 We approximate the reciprocal Bessel function $1/J0(z)$ in $2000$ uniformly distributed random points in the rectangle defined by the corners $±i$ and $10±i$.
  The interpolation data is setup as below. 
