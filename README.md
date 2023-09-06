@@ -92,7 +92,7 @@ title('Approximation of 1/J0(z) in 2000 random points in a rectangle in the comp
 ```
 ![bessel](https://github.com/oscelis/numerical_continued_fraction_interpolation/assets/7952417/d0cc58af-923e-49e6-b8cf-e664cb64effb)
 
-## Analytic functions in the unit disk.
+## Analytic functions in the unit disk with nearby poles.
 We approximate the function $tan(z)$ sampled in 128 equidistant points on the unit circle 
 ```matlab
 ff = @(z) tan(z);
@@ -120,4 +120,24 @@ title('rational approximation to tan(z) sampled on the unit circle ')
 ```
 ![tanz](https://github.com/oscelis/numerical_continued_fraction_interpolation/assets/7952417/4b0cc71c-c320-4b9e-930c-1631ba3238c4)
 
-
+The function $tan(z)$ has poles at $(k+1/2)\pi$ for $k \in \mathbb{Z}$. As expected from a rational approximation method, the poles of the rational function obtained with $n=17$ capture those of tan(z) closest to the unit circle $\pm \pi/2 \approx 1.5708$ quite well.
+```matlab
+[pol,zer, res] = prz_cfrac(aa,xx);
+```
+```matlab
+pol(abs(pol)< 2)
+```
+```matlab
+ans =
+  -1.5708 + 0.0000i
+   1.5708 + 0.0000i
+```
+## Analytic functions in the unit disk with nearby branch point singularities.
+Rational approximations are also usefull when singularities are not poles but branch point singularities. 
+In a similar fashion as before we approximate $log(1.1-z)$ sampled in 256 equidistant points on the unit circle
+```matlab
+ff = @(z) log(1.1-z);
+Z = exp(linspace(-1,1, 256)*1i*2*pi); %equidistant points on the unit circle
+```
+Also here 10-digit accuracy is quickly achieved inside the unit disk. 
+![log](https://github.com/oscelis/numerical_continued_fraction_interpolation/assets/7952417/588b39ec-fe57-4aae-b557-1f1217a45882)
