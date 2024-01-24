@@ -1,10 +1,13 @@
+<meta name="google-site-verification" content="V-uMUzLC5PNP81mS4OoA01LGjhZSn57FADtp-DDezLo" />
+
 # Numerical Continued Fraction Interpolation.
 
 This repository contains MATLAB codes for performing [Numerical Continued Fraction Interpolation](https://doi.org/10.48550/arXiv.2109.10529).
 
 If you use these codes in any published research, please cite the following publication(s):
-* O. Salazar Celis, **Numerical continued fraction interpolation**, *Ukrainian Mathematical Journal*, 2023, (accepted - in press) [arXiv](https://doi.org/10.48550/arXiv.2109.10529).
 * O. Salazar Celis, **Adaptive Thiele interpolation**, *ACM Communications in Computer Algebra*, 56(3):125--132, 2022 ([doi](https://doi.org/10.1145/3594252.3594254))
+* O. Salazar Celis, **Numerical continued fraction interpolation**, *Ukrainian Mathematical Journal*, 2024, (accepted - in press) [arXiv](https://doi.org/10.48550/arXiv.2109.10529).
+
 
 
 # Examples.
